@@ -71,7 +71,8 @@ def get_chapter(id_serie, number_chapter, page=1):
             for chapter in response.json().get('chapters'):
                 if (chapter.get('number') == number_chapter):
                     print(json.dumps(chapter, indent=4))
-                    return chapter.get("releases").get("_scan1").get("id_release"), chapter.get("releases").get("_scan1").get("link")
+                    release_scan = list(chapter.get("releases").keys())[0]
+                    return chapter.get("releases").get(release_scan).get("id_release"), chapter.get("releases").get(release_scan).get("link")
             return get_chapter(id_serie, number_chapter, page + 1)
         else:
             print(
@@ -130,7 +131,7 @@ def main():
     pages = get_page(id_release, key)
     print("=================== Páginas Encontradas ======================")
     print(json.dumps(pages, indent=4))
-    
+
     print("=================== Deseja baixar o capítulo? ======================")
     print("1 - Sim")
     print("2 - Não")
@@ -139,6 +140,7 @@ def main():
     if option == "1":
         save_chapter_pages(name, chapter, pages)
         print("Capítulo baixado com sucesso!")
+
 
 if __name__ == "__main__":
     main()
