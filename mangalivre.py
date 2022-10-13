@@ -99,7 +99,7 @@ def get_page(id_release, key):
 
 def save_chapter_pages(manga_name, chapter_number, pages):
     # Create folder if not exists
-    folder = f"{manga_name}/{chapter_number}"
+    folder = f"mangas/{manga_name}/{chapter_number}"
     if not os.path.exists(folder):
         os.makedirs(folder)
 
