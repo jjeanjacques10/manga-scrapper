@@ -51,7 +51,7 @@ def download_page(manga_name, chapter_number, page):
         return
 
 
-if __name__ == '__main__':
+def get_manga_from_muitomanga():
     name = input("Digite o nome do manga: ")
     mangas = search_manga(name.replace(" ", "+"))
 
@@ -71,3 +71,7 @@ if __name__ == '__main__':
 
     print(f"Downloading {manga_name} chapter {chapter_number}")
     get_chapter(manga_name, chapter_number)
+
+
+if __name__ == '__main__':
+    get_manga_from_muitomanga()

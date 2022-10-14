@@ -113,11 +113,15 @@ def save_chapter_pages(manga_name, chapter_number, pages):
             print(f"Erro ao baixar página {page} - " + response.text)
 
 
-def main():
+def get_manga_from_mangalivre():
     name = input("Digite o nome do manga: ")
     mangas = search_manga(name)
 
     print("=================== Mangas Encontrados ======================")
+    if(mangas == False):
+        print("Nenhum manga encontrado")
+        print("=============================================================")
+        exit()
     for manga in mangas:
         print(f"{manga.get('id_serie')} - {manga.get('name')}")
     print("=============================================================")
@@ -142,4 +146,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    get_manga_from_mangalivre()
